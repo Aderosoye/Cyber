@@ -1,0 +1,5 @@
+DeviceProcessEvents
+| where ProcessCommandLine contains "powershell"
+| where ProcessCommandLine has_any ("DownloadString", "Invoke-WebRequest", "IEX")
+| where InitiatingProcessFileName !~ "powershell.exe"
+| project Timestamp, DeviceName, AccountName, ProcessCommandLine
