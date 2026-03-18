@@ -1,0 +1,4 @@
+DeviceProcessEvents
+| where FileName in~ ("cmd.exe", "powershell.exe", "wscript.exe")
+| where InitiatingProcessFileName in~ ("winword.exe", "excel.exe", "outlook.exe")
+| project Timestamp, DeviceName, FileName, InitiatingProcessFileName, ProcessCommandLine
